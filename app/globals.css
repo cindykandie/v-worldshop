@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Core */
+  --vw-plum: #6b3b7a;     /* deep purple text/accent */
+  --vw-lavender: #caa7d8; /* soft lavender */
+  --vw-blush: #f6b7c9;    /* soft pink */
+  --vw-rose: #f16aa5;     /* bright pink pop */
+  --vw-peach: #f3b08f;    /* warm peach */
+  --vw-cream: #fff7fb;    /* soft creamy white */
+  --vw-ink: #151225;      /* near-black */
+  --vw-white: #ffffff;
+
+  /* Surfaces */
+  --vw-bg: var(--vw-cream);
+  --vw-card: var(--vw-white);
+  --vw-border: rgba(107, 59, 122, 0.18);
+
+  /* Text */
+  --vw-text: var(--vw-ink);
+  --vw-muted: rgba(21, 18, 37, 0.65);
+
+  /* Gradients */
+  --vw-grad-hero: radial-gradient(
+      circle at 15% 20%,
+      rgba(246, 183, 201, 0.75) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(202, 167, 216, 0.75) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      circle at 55% 90%,
+      rgba(243, 176, 143, 0.55) 0%,
+      rgba(255, 255, 255, 0) 55%
+    );
+
+  /* Dark surfaces inspired by inspo sites */
+  --vw-surface: #0b0710;       /* main dark background */
+  --vw-surface-2: #120a1b;     /* sections/cards */
+  --vw-surface-3: #1a1026;     /* elevated */
+  --vw-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+/* nice default base */
+body {
+  background: var(--vw-bg);
+  color: var(--vw-text);
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.vw-hero-bg {
+  background-image: var(--vw-grad-hero);
+}
+
+.vw-surface {
+  background: var(--vw-surface);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.vw-section {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(246, 183, 201, 0.22) 0%,
+      rgba(0, 0, 0, 0) 40%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(202, 167, 216, 0.22) 0%,
+      rgba(0, 0, 0, 0) 40%
+    ),
+    var(--vw-surface);
+}
+
+.vw-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(246, 183, 201, 0.16);
+  box-shadow: var(--vw-shadow);
+  backdrop-filter: blur(10px);
+}
+
+.vw-glow {
+  box-shadow: 0 0 0 1px rgba(202, 167, 216, 0.20), 0 20px 80px rgba(241, 106, 165, 0.15);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
