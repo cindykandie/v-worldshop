@@ -1,48 +1,5 @@
 @import "tailwindcss";
-
-:root {
-  /* Brand Core */
-  --vw-plum: #6b3b7a;     /* deep purple text/accent */
-  --vw-lavender: #caa7d8; /* soft lavender */
-  --vw-blush: #f6b7c9;    /* soft pink */
-  --vw-rose: #f16aa5;     /* bright pink pop */
-  --vw-peach: #f3b08f;    /* warm peach */
-  --vw-cream: #fff7fb;    /* soft creamy white */
-  --vw-ink: #151225;      /* near-black */
-  --vw-white: #ffffff;
-
-  /* Surfaces */
-  --vw-bg: var(--vw-cream);
-  --vw-card: var(--vw-white);
-  --vw-border: rgba(107, 59, 122, 0.18);
-
-  /* Text */
-  --vw-text: var(--vw-ink);
-  --vw-muted: rgba(21, 18, 37, 0.65);
-
-  /* Gradients */
-  --vw-grad-hero: radial-gradient(
-      circle at 15% 20%,
-      rgba(246, 183, 201, 0.75) 0%,
-      rgba(255, 255, 255, 0) 55%
-    ),
-    radial-gradient(
-      circle at 85% 25%,
-      rgba(202, 167, 216, 0.75) 0%,
-      rgba(255, 255, 255, 0) 55%
-    ),
-    radial-gradient(
-      circle at 55% 90%,
-      rgba(243, 176, 143, 0.55) 0%,
-      rgba(255, 255, 255, 0) 55%
-    );
-
-  /* Dark surfaces inspired by inspo sites */
-  --vw-surface: #0b0710;       /* main dark background */
-  --vw-surface-2: #120a1b;     /* sections/cards */
-  --vw-surface-3: #1a1026;     /* elevated */
-  --vw-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
-}
+@import "./theme.css";
 
 /* nice default base */
 body {
@@ -84,6 +41,19 @@ body {
 
 .vw-glow {
   box-shadow: 0 0 0 1px rgba(202, 167, 216, 0.20), 0 20px 80px rgba(241, 106, 165, 0.15);
+}
+
+.vw-neon-hero {
+  background: var(--vw-neon-grad), var(--vw-night);
+}
+
+.vw-neon-card {
+  background: rgba(10, 8, 22, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 61, 189, 0.18),
+    0 25px 120px rgba(10, 8, 22, 0.8);
+  backdrop-filter: blur(12px);
 }
 
 @theme inline {

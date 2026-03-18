@@ -1,0 +1,66 @@
+:root {
+  /* Brand Core */
+  --vw-plum: #6b3b7a;     /* deep purple text/accent */
+  --vw-lavender: #caa7d8; /* soft lavender */
+  --vw-blush: #f6b7c9;    /* soft pink */
+  --vw-rose: #f16aa5;     /* bright pink pop */
+  --vw-peach: #f3b08f;    /* warm peach */
+  --vw-cream: #fff7fb;    /* soft creamy white */
+  --vw-ink: #151225;      /* near-black */
+  --vw-white: #ffffff;
+
+  /* Neon palette (home hero) */
+  --vw-neon-pink: #ff3dbd;
+  --vw-neon-blue: #3bb6ff;
+  --vw-neon-violet: #7c3bff;
+  --vw-night: #070611;
+  --vw-night-2: #0f0b20;
+
+  /* Surfaces */
+  --vw-bg: var(--vw-cream);
+  --vw-card: var(--vw-white);
+  --vw-border: rgba(107, 59, 122, 0.18);
+
+  /* Text */
+  --vw-text: var(--vw-ink);
+  --vw-muted: rgba(21, 18, 37, 0.65);
+
+  /* Gradients */
+  --vw-grad-hero: radial-gradient(
+      circle at 15% 20%,
+      rgba(246, 183, 201, 0.75) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(202, 167, 216, 0.75) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      circle at 55% 90%,
+      rgba(243, 176, 143, 0.55) 0%,
+      rgba(255, 255, 255, 0) 55%
+    );
+
+  --vw-neon-grad: radial-gradient(
+      60% 60% at 20% 20%,
+      rgba(255, 61, 189, 0.45) 0%,
+      rgba(255, 61, 189, 0) 60%
+    ),
+    radial-gradient(
+      50% 50% at 80% 15%,
+      rgba(59, 182, 255, 0.35) 0%,
+      rgba(59, 182, 255, 0) 60%
+    ),
+    radial-gradient(
+      45% 45% at 60% 85%,
+      rgba(124, 59, 255, 0.35) 0%,
+      rgba(124, 59, 255, 0) 60%
+    );
+
+  /* Dark surfaces inspired by inspo sites */
+  --vw-surface: #0b0710;       /* main dark background */
+  --vw-surface-2: #120a1b;     /* sections/cards */
+  --vw-surface-3: #1a1026;     /* elevated */
+  --vw-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
