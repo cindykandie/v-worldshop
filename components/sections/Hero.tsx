@@ -53,35 +53,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          {[
-            { title: "Swing Beat", note: "Fog Simulation" },
-            { title: "Dance Steps", note: "Fog Simulation" },
-            { title: "Flow Vibes", note: "Fog Simulation" },
-          ].map((card, index) => (
-            <div
-              key={card.title}
-              className={`flex w-56 items-center gap-3 rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur ${
-                index === 0 ? "shadow-[0_0_30px_rgba(255,61,189,0.35)]" : ""
-              }`}
-            >
-              <div className="relative h-12 w-12 overflow-hidden rounded-lg bg-white/10">
-                <Image
-                  src="/mainlogo.jpg"
-                  alt={`${card.title} thumbnail`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-white">
-                  {card.title}
-                </p>
-                <p className="text-[11px] text-white/60">{card.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+       
       </div>
     </section>
   );
