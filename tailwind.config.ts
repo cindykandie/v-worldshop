@@ -17,6 +17,11 @@ const config: Config = {
           cream: "var(--vw-cream)",
           ink: "var(--vw-ink)",
           white: "var(--vw-white)",
+          "neon-pink": "var(--vw-neon-pink)",
+          "neon-blue": "var(--vw-neon-blue)",
+          "neon-violet": "var(--vw-neon-violet)",
+          night: "var(--vw-night)",
+          "night-2": "var(--vw-night-2)",
 
           bg: "var(--vw-bg)",
           card: "var(--vw-card)",
