@@ -19,6 +19,10 @@ const bodyFont = Manrope({
 export const metadata: Metadata = {
   title: "The Vagina Worldshop",
   description: "A glowing, feminine world of movement, community, and embodied art.",
+  icons: {
+    icon: "/icon.png",
+  },
+  themeColor: "#0a0712",
 };
 
 export default function RootLayout({

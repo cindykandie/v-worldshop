@@ -47,7 +47,7 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-20 pt-24 sm:pt-28">
-        <div className="mt-10 flex flex-1 items-center justify-between gap-12 lg:mt-16 lg:flex-row">
+        <div className="mt-4 flex flex-1 items-center justify-between gap-12 lg:mt-0 lg:flex-row">
           <Stagger className="flex flex-1 flex-col items-start">
             <StaggerItem>
               <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
@@ -58,7 +58,7 @@ export default function Hero() {
             <StaggerItem>
               <h1 className="mt-6 text-[3.2rem] font-semibold uppercase leading-[0.95] tracking-[0.12em] text-white sm:text-[4.4rem]">
                 A glowing world of
-                <span className="block bg-gradient-to-r from-vw-electric-pink via-vw-neon-violet to-vw-hot-pink bg-clip-text text-transparent">
+                <span className="block text-vw-hot-pink drop-shadow-[0_0_12px_rgba(255,74,209,0.35)]">
                   feminine movement
                 </span>
               </h1>
@@ -73,8 +73,8 @@ export default function Hero() {
 
             <StaggerItem>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="#events">Join Classes</Button>
-                <Button href="#newsletter" variant="ghost">
+                <Button href="https://vaginaworldshop.hustlesasa.shop/">Join Classes</Button>
+                <Button href="https://www.instagram.com/vaginaworldshop/" variant="ghost">
                   Enter the Community
                 </Button>
               </div>

@@ -130,7 +130,12 @@ export default function Navbar() {
               ))}
             </div>
             <div className="mt-4 max-w-[400] mx-auto">
-              <Button className="w-full">Join the Circle</Button>
+              <Button
+                href="https://www.instagram.com/vaginaworldshop/"
+                className="w-full"
+              >
+                Join the Circle
+              </Button>
             </div>
           </motion.div>
         </Container>

@@ -36,11 +36,14 @@ const Events = () => {
 
             <StaggerItem>
               <div className="flex flex-wrap items-center gap-3">
-                <Button href="#events" className="px-8">
+                <Button href="https://vaginaworldshop.hustlesasa.shop/" className="px-8">
                   Join Classes
                 </Button>
 
-                <button className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10">
+                <a
+                  href="https://www.instagram.com/p/DWOo_0jiOIl/"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10"
+                >
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-vw-neon-violet/20 text-vw-neon-violet">
                     <svg
                       viewBox="0 0 24 24"
@@ -51,7 +54,7 @@ const Events = () => {
                     </svg>
                   </span>
                   Watch Demo
-                </button>
+                </a>
               </div>
             </StaggerItem>
 
@@ -74,7 +77,7 @@ const Events = () => {
               <div className="relative flex items-center justify-center">
                 <div className="relative h-[22rem] w-[14rem] sm:h-[28rem] sm:w-[18rem]">
                   <Image
-                    src="/mainlogo.jpg"
+                    src="/class.png"
                     alt="Dancer pose one"
                     fill
                     className="object-cover opacity-90 [filter:drop-shadow(0_0_25px_rgba(124,59,255,0.55))]"
@@ -82,7 +85,7 @@ const Events = () => {
                 </div>
                 <div className="relative -ml-10 mt-10 h-[24rem] w-[16rem] sm:h-[30rem] sm:w-[20rem]">
                   <Image
-                    src="/mainlogo.jpg"
+                    src="/femininity.png"
                     alt="Dancer pose two"
                     fill
                     className="object-cover opacity-90 [filter:drop-shadow(0_0_30px_rgba(255,61,189,0.6))]"

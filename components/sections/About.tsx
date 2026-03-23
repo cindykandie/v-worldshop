@@ -43,7 +43,7 @@ export default function About() {
             <StaggerItem>
               <h2 className="text-4xl font-semibold uppercase leading-[1.05] text-white md:text-6xl">
                 A playful world for{" "}
-                <span className="bg-gradient-to-r from-vw-electric-pink via-vw-neon-violet to-vw-hot-pink bg-clip-text text-transparent">
+                <span className="inline-block text-vw-hot-pink drop-shadow-[0_0_12px_rgba(255,74,209,0.35)]">
                   feminine freedom
                 </span>
                 .
@@ -77,7 +77,6 @@ export default function About() {
 
             <StaggerItem>
               <div className="flex flex-wrap gap-3">
-                <Button href="#events">View Workshops</Button>
                 <Button href="#newsletter" variant="ghost">
                   Join the Community
                 </Button>
