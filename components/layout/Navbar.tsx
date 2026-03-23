@@ -7,17 +7,17 @@ import Button from "@/components/ui/Button";
 
 const links = [
   { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
-  { label: "Pages", href: "#pages" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Workshops", href: "#events" },
+  { label: "Shop", href: "#shop" },
+  { label: "Stories", href: "#testimonials" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur">
       <Container className="flex items-center justify-between py-4">
         <div className="flex items-center gap-3">
           <Logo width={44} height={44} priority className="rounded-full" />
@@ -26,22 +26,21 @@ export default function Navbar() {
           </span>
         </div>
 
-        <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
+        <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.35em] text-white/70 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="hover:text-white"
+              className="group relative transition hover:text-white"
             >
               {l.label}
+              <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-gradient-to-r from-vw-hot-pink via-vw-neon-violet to-vw-neon-pink transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
 
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-vw-neon-violet to-vw-neon-pink text-white">
-            Get Started
-          </Button>
+          <Button className="px-6">Join the Circle</Button>
         </div>
 
         <button
@@ -89,9 +88,7 @@ export default function Navbar() {
               ))}
             </div>
             <div className="mt-4">
-              <Button className="w-full bg-gradient-to-r from-vw-neon-violet to-vw-neon-pink text-white">
-                Get Started
-              </Button>
+              <Button className="w-full">Join the Circle</Button>
             </div>
           </div>
         </Container>

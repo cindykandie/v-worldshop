@@ -1,66 +1,112 @@
 :root {
   /* Brand Core */
-  --vw-plum: #6b3b7a;     /* deep purple text/accent */
-  --vw-lavender: #caa7d8; /* soft lavender */
-  --vw-blush: #f6b7c9;    /* soft pink */
-  --vw-rose: #f16aa5;     /* bright pink pop */
+  --vw-plum: #5a2b70;     /* deep plum */
+  --vw-plum-2: #3b163f;   /* darker plum */
+  --vw-lavender: #c7a3da; /* soft lavender */
+  --vw-lilac: #e1c7f0;    /* pale lilac */
+  --vw-blush: #f6b7c9;    /* soft blush */
+  --vw-rose: #f16aa5;     /* bright rose */
   --vw-peach: #f3b08f;    /* warm peach */
+  --vw-hot-pink: #ff2fa8; /* hot pink */
+  --vw-electric-pink: #ff4ad1; /* electric pink */
+  --vw-magenta: #c3148a;  /* magenta */
+  --vw-wine: #7a1039;     /* wine red */
   --vw-cream: #fff7fb;    /* soft creamy white */
-  --vw-ink: #151225;      /* near-black */
+  --vw-soft-white: #fdf4f9; /* soft white */
+  --vw-ink: #151225;      /* near-black text */
   --vw-white: #ffffff;
+  --vw-obsidian: #08060f; /* true dark */
+  --vw-charcoal: #0f0a18; /* dark surface */
 
-  /* Neon palette (home hero) */
+  /* Neon palette */
   --vw-neon-pink: #ff3dbd;
   --vw-neon-blue: #3bb6ff;
   --vw-neon-violet: #7c3bff;
-  --vw-night: #070611;
-  --vw-night-2: #0f0b20;
 
   /* Surfaces */
-  --vw-bg: var(--vw-cream);
-  --vw-card: var(--vw-white);
-  --vw-border: rgba(107, 59, 122, 0.18);
+  --vw-bg: var(--vw-soft-white);
+  --vw-card: rgba(255, 255, 255, 0.06);
+  --vw-border: rgba(255, 255, 255, 0.12);
 
   /* Text */
-  --vw-text: var(--vw-ink);
-  --vw-muted: rgba(21, 18, 37, 0.65);
+  --vw-text: #1d0f23;
+  --vw-muted: rgba(29, 15, 35, 0.68);
+
+  /* Dark surfaces */
+  --vw-surface: #0a0712;
+  --vw-surface-2: #120a1b;
+  --vw-surface-3: #1a1026;
+  --vw-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
 
   /* Gradients */
   --vw-grad-hero: radial-gradient(
-      circle at 15% 20%,
-      rgba(246, 183, 201, 0.75) 0%,
-      rgba(255, 255, 255, 0) 55%
+      circle at 15% 15%,
+      rgba(255, 61, 189, 0.6) 0%,
+      rgba(10, 7, 18, 0) 55%
     ),
     radial-gradient(
-      circle at 85% 25%,
-      rgba(202, 167, 216, 0.75) 0%,
-      rgba(255, 255, 255, 0) 55%
+      circle at 80% 20%,
+      rgba(124, 59, 255, 0.45) 0%,
+      rgba(10, 7, 18, 0) 60%
     ),
     radial-gradient(
-      circle at 55% 90%,
-      rgba(243, 176, 143, 0.55) 0%,
-      rgba(255, 255, 255, 0) 55%
-    );
+      circle at 55% 85%,
+      rgba(255, 74, 209, 0.4) 0%,
+      rgba(10, 7, 18, 0) 60%
+    ),
+    linear-gradient(180deg, rgba(10, 7, 18, 0.95) 0%, rgba(10, 7, 18, 1) 100%);
 
-  --vw-neon-grad: radial-gradient(
-      60% 60% at 20% 20%,
-      rgba(255, 61, 189, 0.45) 0%,
-      rgba(255, 61, 189, 0) 60%
+  --vw-grad-plum: radial-gradient(
+      circle at 20% 10%,
+      rgba(124, 59, 255, 0.3) 0%,
+      rgba(18, 10, 27, 0) 55%
     ),
     radial-gradient(
-      50% 50% at 80% 15%,
-      rgba(59, 182, 255, 0.35) 0%,
-      rgba(59, 182, 255, 0) 60%
+      circle at 80% 0%,
+      rgba(255, 61, 189, 0.28) 0%,
+      rgba(18, 10, 27, 0) 60%
     ),
-    radial-gradient(
-      45% 45% at 60% 85%,
-      rgba(124, 59, 255, 0.35) 0%,
-      rgba(124, 59, 255, 0) 60%
-    );
+    linear-gradient(180deg, #120a1b 0%, #0a0712 100%);
 
-  /* Dark surfaces inspired by inspo sites */
-  --vw-surface: #0b0710;       /* main dark background */
-  --vw-surface-2: #120a1b;     /* sections/cards */
-  --vw-surface-3: #1a1026;     /* elevated */
-  --vw-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+  --vw-grad-magenta: radial-gradient(
+      circle at 15% 15%,
+      rgba(255, 61, 189, 0.35) 0%,
+      rgba(10, 7, 18, 0) 55%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(195, 20, 138, 0.3) 0%,
+      rgba(10, 7, 18, 0) 60%
+    ),
+    linear-gradient(180deg, #140912 0%, #0a0712 100%);
+
+  --vw-grad-rose: radial-gradient(
+      circle at 20% 20%,
+      rgba(246, 183, 201, 0.35) 0%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(255, 74, 209, 0.25) 0%,
+      rgba(255, 255, 255, 0) 65%
+    ),
+    linear-gradient(180deg, #fff4f9 0%, #f8e6f1 100%);
+
+  --vw-grad-ink: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 61, 189, 0.22) 0%,
+      rgba(10, 7, 18, 0) 60%
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(124, 59, 255, 0.22) 0%,
+      rgba(10, 7, 18, 0) 65%
+    ),
+    linear-gradient(180deg, #0c0813 0%, #08060f 100%);
+
+  --vw-grad-button: linear-gradient(135deg, #ff4ad1 0%, #ff2fa8 40%, #7c3bff 100%);
+  --vw-grad-button-hover: linear-gradient(135deg, #ff63d9 0%, #ff3fb1 45%, #8f58ff 100%);
+  --vw-grad-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  --vw-grad-glow: radial-gradient(circle at 50% 40%, rgba(255, 74, 209, 0.5), rgba(124, 59, 255, 0.2) 45%, rgba(10, 7, 18, 0) 70%);
+  --vw-grad-sheen: linear-gradient(110deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0) 70%);
 }
