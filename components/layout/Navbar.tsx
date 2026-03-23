@@ -1,50 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "@/components/ui/Logo";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { GlowMenuItem } from "@/components/ui/GlowMenu";
+import { motion } from "framer-motion";
 
-const links = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Workshops", href: "#events" },
-  { label: "Shop", href: "#shop" },
-  { label: "Stories", href: "#testimonials" },
+const menuItems: GlowMenuItem[] = [
+  {
+    label: "Home",
+    href: "#",
+    gradient:
+      "radial-gradient(circle, rgba(255,74,209,0.35) 0%, rgba(255,47,168,0.12) 45%, rgba(8,6,15,0) 70%)",
+  },
+  {
+    label: "About",
+    href: "#about",
+    gradient:
+      "radial-gradient(circle, rgba(124,59,255,0.3) 0%, rgba(124,59,255,0.12) 45%, rgba(8,6,15,0) 70%)",
+  },
+  {
+    label: "Workshops",
+    href: "#events",
+    gradient:
+      "radial-gradient(circle, rgba(255,61,189,0.35) 0%, rgba(255,61,189,0.12) 45%, rgba(8,6,15,0) 70%)",
+  },
+  {
+    label: "Shop",
+    href: "#shop",
+    gradient:
+      "radial-gradient(circle, rgba(246,183,201,0.45) 0%, rgba(246,183,201,0.18) 45%, rgba(8,6,15,0) 70%)",
+  },
+  {
+    label: "Stories",
+    href: "#testimonials",
+    gradient:
+      "radial-gradient(circle, rgba(195,20,138,0.4) 0%, rgba(195,20,138,0.14) 45%, rgba(8,6,15,0) 70%)",
+  },
+  {
+    label: "Community",
+    href: "#newsletter",
+    gradient:
+      "radial-gradient(circle, rgba(202,163,216,0.4) 0%, rgba(202,163,216,0.16) 45%, rgba(8,6,15,0) 70%)",
+  },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur">
-      <Container className="flex items-center justify-between py-4">
+    <header
+      className={`fixed top-0 z-50 w-full border-b border-white/10 transition ${
+        scrolled ? "bg-black/80 backdrop-blur" : "bg-black/30 backdrop-blur-sm"
+      }`}
+    >
+      <Container className="flex items-center justify-between gap-6 py-4">
         <div className="flex items-center gap-3">
           <Logo width={44} height={44} priority className="rounded-full" />
-          <span className="text-lg font-semibold tracking-wide text-white">
+          <span className="text-sm font-semibold uppercase tracking-[0.25em] text-white/90">
             Vagina Worldshop
           </span>
         </div>
 
-        <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.35em] text-white/70 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="group relative transition hover:text-white"
-            >
-              {l.label}
-              <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-gradient-to-r from-vw-hot-pink via-vw-neon-violet to-vw-neon-pink transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-
-        <div className="hidden md:block">
-          <Button className="px-6">Join the Circle</Button>
-        </div>
-
         <button
-          className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-white md:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-white"
           aria-label="Toggle navigation"
           onClick={() => setMenuOpen((prev) => !prev)}
         >
@@ -74,23 +103,36 @@ export default function Navbar() {
       </Container>
 
       {menuOpen ? (
-        <Container className="pb-4 md:hidden">
-          <div className="rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur">
-            <div className="grid gap-3 text-sm text-white/80">
-              {links.map((item) => (
+        <Container className="pb-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-2xl border border-white/10 bg-black/45 p-4 backdrop-blur-xl"
+          >
+            <div className="grid gap-3 text-sm text-white/80 max-w-[400] mx-auto">
+              {menuItems.map((item) => (
                 <a
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
-                  className="rounded-lg px-3 py-2 hover:bg-white/5"
+                  onClick={() => {
+                    setActiveItem(item.label);
+                    setMenuOpen(false);
+                  }}
+                  className="group relative rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/70 transition hover:text-white"
                 >
-                  {item.label}
+                  <span
+                    className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition group-hover:opacity-100"
+                    style={{ background: item.gradient }}
+                  />
+                  <span className="relative z-10">{item.label}</span>
                 </a>
               ))}
             </div>
-            <div className="mt-4">
+            <div className="mt-4 max-w-[400] mx-auto">
               <Button className="w-full">Join the Circle</Button>
             </div>
-          </div>
+          </motion.div>
         </Container>
       ) : null}
     </header>

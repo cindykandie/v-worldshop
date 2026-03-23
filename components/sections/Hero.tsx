@@ -46,7 +46,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute bottom-[-35%] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-vw-hot-pink/35 blur-3xl animate-vw-pulse" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-20 pt-12">
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-20 pt-24 sm:pt-28">
         <div className="mt-10 flex flex-1 items-center justify-between gap-12 lg:mt-16 lg:flex-row">
           <Stagger className="flex flex-1 flex-col items-start">
             <StaggerItem>
@@ -91,7 +91,11 @@ export default function Hero() {
 
           <Stagger className="relative flex flex-1 items-center justify-center">
             <StaggerItem className="relative">
-              <div className="relative h-[22rem] w-[16rem] sm:h-[28rem] sm:w-[20rem]">
+              <motion.div
+                className="relative h-[22rem] w-[16rem] sm:h-[28rem] sm:w-[20rem]"
+                animate={{ y: [-6, 6, -6] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <Image
                   src="/dancelogo.jpg"
                   alt="Hero dancer"
@@ -101,7 +105,7 @@ export default function Hero() {
                 <div className="absolute inset-0 rounded-[2.8rem] bg-gradient-to-b from-transparent via-transparent to-black/60" />
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-vw-electric-pink/40 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-10 -left-6 h-40 w-40 rounded-full bg-vw-neon-violet/35 blur-3xl" />
-              </div>
+              </motion.div>
             </StaggerItem>
           </Stagger>
         </div>
