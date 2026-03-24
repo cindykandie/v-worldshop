@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import Button from "@/components/ui/Button";
@@ -96,11 +95,13 @@ export default function Hero() {
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Image
-                  src="/dancelogo.jpg"
-                  alt="Hero dancer"
-                  fill
-                  className="rounded-[2.8rem] object-cover opacity-95 shadow-[0_20px_80px_rgba(0,0,0,0.55)]"
+                <video
+                  src="/danceclass.MOV"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full rounded-[2.8rem] object-cover opacity-95 shadow-[0_20px_80px_rgba(0,0,0,0.55)]"
                 />
                 <div className="absolute inset-0 rounded-[2.8rem] bg-gradient-to-b from-transparent via-transparent to-black/60" />
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-vw-electric-pink/40 blur-3xl" />

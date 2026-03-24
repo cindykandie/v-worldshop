@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
+import { SocialIcons } from "@/components/ui/social-icons";
 
 export default function Footer() {
   return (
@@ -27,7 +28,6 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-white/70">
               <li><a href="#about" className="hover:text-white">About</a></li>
               <li><a href="#events" className="hover:text-white">Workshops</a></li>
-              <li><a href="#shop" className="hover:text-white">Shop</a></li>
               <li><a href="#testimonials" className="hover:text-white">Stories</a></li>
             </ul>
           </div>
@@ -53,6 +53,14 @@ export default function Footer() {
               />
               <Button className="px-6">Join</Button>
             </form>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
+                Socials
+              </p>
+              <div className="mt-3">
+                <SocialIcons />
+              </div>
+            </div>
           </div>
         </div>
 

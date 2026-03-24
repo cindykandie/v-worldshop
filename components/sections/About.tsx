@@ -54,8 +54,8 @@ export default function About() {
               <p className="max-w-xl text-sm leading-relaxed text-white/75 md:text-base">
                 The Vagina Worldshop is a community-led space built around art,
                 embodiment, and self-love. We create experiences (like Twerk Out
-                sessions) and curated drops that help you reconnect with your
-                body, release tension, and feel soft — boldly.
+                sessions). A vulva loving community 🌸
+                Celebrating vulvas, femininity, and the power of female expression ✨💋
               </p>
             </StaggerItem>
 
