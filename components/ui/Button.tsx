@@ -14,13 +14,10 @@ export default function Button({
   className,
   children,
 }: Props) {
-  const base =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition";
+  const base = "vw-btn";
 
   const styles =
-    variant === "primary"
-      ? "bg-vw-plum text-white hover:opacity-90"
-      : "border border-white/15 bg-white/5 text-white hover:bg-white/10";
+    variant === "primary" ? "vw-btn-primary" : "vw-btn-ghost";
 
   if (href) {
     return (
@@ -30,5 +27,7 @@ export default function Button({
     );
   }
 
-  return <button className={cn(base, styles, className)}>{children}</button>;
+  return (
+    <button className={cn(base, styles, className)}>{children}</button>
+  );
 }

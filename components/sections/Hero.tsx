@@ -1,59 +1,115 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const smoothX = useSpring(x, { stiffness: 60, damping: 20 });
+  const smoothY = useSpring(y, { stiffness: 60, damping: 20 });
+  const glow = useMotionTemplate`radial-gradient(260px at ${smoothX}px ${smoothY}px, rgba(255, 74, 209, 0.35), rgba(10, 7, 18, 0) 70%)`;
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    x.set(rect.width / 2);
+    y.set(rect.height / 2);
+  }, [x, y]);
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-vw-night text-white">
-      <div className="absolute inset-0 vw-neon-hero" />
-      <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(140deg,rgba(255,255,255,0.08),rgba(104, 4, 155, 0)_40%),linear-gradient(180deg,rgba(255,61,189,0.3),rgba(69, 4, 48, 0)70%)]" />
-      <div className="pointer-events-none absolute left-[-10%] top-[20%] h-[28rem] w-[28rem] rounded-full bg-vw-neon-pink/40 blur-3xl" />
-      <div className="pointer-events-none absolute right-[-12%] top-[-8%] h-[30rem] w-[30rem] rounded-full bg-vw-neon-blue/35 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-35%] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-vw-neon-pink/40 blur-3xl" />
+    <section
+      className="relative min-h-screen overflow-hidden bg-vw-obsidian text-white"
+      onMouseMove={(event) => {
+        const rect = sectionRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        x.set(event.clientX - rect.left);
+        y.set(event.clientY - rect.top);
+      }}
+      onMouseLeave={() => {
+        const rect = sectionRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        x.set(rect.width / 2);
+        y.set(rect.height / 2);
+      }}
+    >
+      <div ref={sectionRef} className="absolute inset-0">
+        <div className="absolute inset-0 vw-hero-bg" />
+        <motion.div className="absolute inset-0" style={{ backgroundImage: glow }} />
+        <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(140deg,rgba(255,255,255,0.08),rgba(104,4,155,0)_45%),linear-gradient(180deg,rgba(255,61,189,0.28),rgba(69,4,48,0)70%)]" />
+        <div className="pointer-events-none absolute left-[-12%] top-[20%] h-[26rem] w-[26rem] rounded-full bg-vw-electric-pink/40 blur-3xl animate-vw-float" />
+        <div className="pointer-events-none absolute right-[-10%] top-[-8%] h-[30rem] w-[30rem] rounded-full bg-vw-neon-violet/35 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[-35%] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-vw-hot-pink/35 blur-3xl animate-vw-pulse" />
+      </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-24 pt-8">
-
-        <div className="relative mt-12 flex flex-1 items-center justify-center">
-          <div className="absolute -top-6 left-1/2 h-1 w-28 -translate-x-1/2 rounded-full bg-vw-neon-pink shadow-[0_0_18px_rgba(255,61,189,0.9)]" />
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative flex w-full flex-col items-center text-center"
-          >
-            <div className="relative h-[22rem] w-[15rem] sm:h-[28rem] sm:w-[19rem]">
-              <Image
-                src="/dancelogo.jpg"
-                alt="Hero dancer placeholder"
-                fill
-                className="object-cover opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
-            </div>
-
-            <h1 className="mt-6 text-[3.5rem] font-black uppercase tracking-[0.18em] md:text-[5rem]">
-              <span>THE</span>
-              <span className="mx-2 text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.7)]">
-                VAGINA
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-20 pt-24 sm:pt-28">
+        <div className="mt-4 flex flex-1 items-center justify-between gap-12 lg:mt-0 lg:flex-row">
+          <Stagger className="flex flex-1 flex-col items-start">
+            <StaggerItem>
+              <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                The Vagina Worldshop
               </span>
-              <br></br>
-              <span>WORLDSHOP</span>
-            </h1>
+            </StaggerItem>
 
-            <div className="mt-6">
-              <Button
-                className="rounded-none border border-white/60 bg-white/10 px-10 py-3 uppercase tracking-[0.3em] text-white backdrop-blur"
+            <StaggerItem>
+              <h1 className="mt-6 text-[3.2rem] font-semibold uppercase leading-[0.95] tracking-[0.12em] text-white sm:text-[4.4rem]">
+                A glowing world of
+                <span className="block text-vw-hot-pink drop-shadow-[0_0_12px_rgba(255,74,209,0.35)]">
+                  feminine movement
+                </span>
+              </h1>
+            </StaggerItem>
+
+            <StaggerItem>
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/75 md:text-base">
+                Immerse in dance, embodiment, and community. This is a soft,
+                magnetic space for exploration, expression, and gentle power.
+              </p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href="https://vaginaworldshop.hustlesasa.shop/">Join Classes</Button>
+                <Button href="https://www.instagram.com/vaginaworldshop/" variant="ghost">
+                  Enter the Community
+                </Button>
+              </div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="mt-10 flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-white/60">
+                <span>Safe space</span>
+                <span>Artful rituals</span>
+                <span>Body-positive</span>
+              </div>
+            </StaggerItem>
+          </Stagger>
+
+          <Stagger className="relative flex flex-1 items-center justify-center">
+            <StaggerItem className="relative">
+              <motion.div
+                className="relative h-[22rem] w-[16rem] sm:h-[28rem] sm:w-[20rem]"
+                animate={{ y: [-6, 6, -6] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               >
-                Join Classes
-              </Button>
-            </div>
-          </motion.div>
+                <video
+                  src="/danceclass.MOV"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full rounded-[2.8rem] object-cover opacity-95 shadow-[0_20px_80px_rgba(0,0,0,0.55)]"
+                />
+                <div className="absolute inset-0 rounded-[2.8rem] bg-gradient-to-b from-transparent via-transparent to-black/60" />
+                <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-vw-electric-pink/40 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-10 -left-6 h-40 w-40 rounded-full bg-vw-neon-violet/35 blur-3xl" />
+              </motion.div>
+            </StaggerItem>
+          </Stagger>
         </div>
-
-       
       </div>
     </section>
   );
