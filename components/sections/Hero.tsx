@@ -22,7 +22,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden bg-vw-obsidian text-white"
+      className="relative py-10 overflow-hidden bg-vw-obsidian text-white"
       onMouseMove={(event) => {
         const rect = sectionRef.current?.getBoundingClientRect();
         if (!rect) return;
@@ -45,7 +45,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute bottom-[-35%] left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-vw-hot-pink/35 blur-3xl animate-vw-pulse" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-20 pt-24 sm:pt-28">
+      <div className="relative mx-auto flex max-w-6xl flex-col px-6 pb-2  sm:pt-20">
         <div className="mt-4 flex flex-1 items-center justify-between gap-12 lg:mt-0 lg:flex-row">
           <Stagger className="flex flex-1 flex-col items-start">
             <StaggerItem>
@@ -80,7 +80,7 @@ export default function Hero() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-10 flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-white/60">
+              <div className="my-10 flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-white/60">
                 <span>Safe space</span>
                 <span>Artful rituals</span>
                 <span>Body-positive</span>

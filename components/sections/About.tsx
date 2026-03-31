@@ -33,6 +33,39 @@ export default function About() {
 
       <Container className="relative z-10">
         <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <Stagger className="relative pb-12">
+            <StaggerItem>
+              <div className="vw-card vw-card-sheen relative overflow-hidden rounded-[2rem] p-4 m-8">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem]">
+                  <Image
+                    src="/mainlogo.jpg"
+                    alt="About visual"
+                    fill
+                    className="object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/60" />
+                  <div className="pointer-events-none absolute inset-0 ring-1 ring-white/10" />
+                </div>
+
+                <div className="absolute left-6 top-6 rounded-full border border-white/15 bg-black/50 px-3 py-1 text-xs font-semibold text-white/80">
+                  Safe • Symbolic • Celebratory
+                </div>
+              </div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="vw-card absolute -bottom-2 left-6 right-6 rounded-2xl p-5">
+                <p className="text-sm text-white/85 md:text-base">
+                  “I was worried about what we think about vaginas, and even more
+                  worried that we don’t think about them.”
+                </p>
+                <p className="mt-3 text-xs font-semibold text-white/60">
+                  — Eve Ensler
+                </p>
+              </div>
+            </StaggerItem>
+          </Stagger>
+
           <Stagger className="space-y-6">
             <StaggerItem>
               <p className="text-xs font-semibold tracking-[0.35em] text-white/50">
@@ -80,39 +113,6 @@ export default function About() {
                 <Button href="#newsletter" variant="ghost">
                   Join the Community
                 </Button>
-              </div>
-            </StaggerItem>
-          </Stagger>
-
-          <Stagger className="relative pb-12">
-            <StaggerItem>
-              <div className="vw-card vw-card-sheen relative overflow-hidden rounded-[2rem] p-4">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem]">
-                  <Image
-                    src="/mainlogo.jpg"
-                    alt="About visual"
-                    fill
-                    className="object-cover opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/60" />
-                  <div className="pointer-events-none absolute inset-0 ring-1 ring-white/10" />
-                </div>
-
-                <div className="absolute left-6 top-6 rounded-full border border-white/15 bg-black/50 px-3 py-1 text-xs font-semibold text-white/80">
-                  Safe • Symbolic • Celebratory
-                </div>
-              </div>
-            </StaggerItem>
-
-            <StaggerItem>
-              <div className="vw-card absolute -bottom-6 left-6 right-6 rounded-2xl p-5">
-                <p className="text-sm text-white/85 md:text-base">
-                  “I was worried about what we think about vaginas, and even more
-                  worried that we don’t think about them.”
-                </p>
-                <p className="mt-3 text-xs font-semibold text-white/60">
-                  — Eve Ensler
-                </p>
               </div>
             </StaggerItem>
           </Stagger>
