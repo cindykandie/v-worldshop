@@ -12,7 +12,7 @@ const navItems = [
   { label: "Subscribers", href: "/admin/subscribers" },
 ];
 
-export default async function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminShell({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");
