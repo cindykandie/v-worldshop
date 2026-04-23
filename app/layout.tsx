@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.png",
   },
+};
+
+export const viewport = {
   themeColor: "#0a0712",
 };
 

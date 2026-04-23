@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
-const ease = [0.22, 1, 0.36, 1];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function Reveal({
   children,
