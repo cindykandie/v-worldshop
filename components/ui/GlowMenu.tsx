@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { motion } from "framer-motion";
+import { forwardRef } from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 export interface GlowMenuItem {
@@ -11,11 +11,11 @@ export interface GlowMenuItem {
   accentClass?: string;
 }
 
-interface GlowMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+type GlowMenuProps = HTMLMotionProps<"nav"> & {
   items: GlowMenuItem[];
   activeItem?: string;
   onItemClick?: (label: string) => void;
-}
+};
 
 const glowVariants = {
   initial: { opacity: 0, scale: 0.85 },
@@ -23,8 +23,8 @@ const glowVariants = {
     opacity: 1,
     scale: 1.2,
     transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.55, type: "spring", stiffness: 220, damping: 22 },
+      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
+      scale: { duration: 0.55, type: "spring" as const, stiffness: 220, damping: 22 },
     },
   },
 };
@@ -33,11 +33,11 @@ const navGlowVariants = {
   initial: { opacity: 0 },
   hover: {
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
   },
 };
 
-export const GlowMenu = React.forwardRef<HTMLDivElement, GlowMenuProps>(
+export const GlowMenu = forwardRef<HTMLElement, GlowMenuProps>(
   ({ className, items, activeItem, onItemClick, ...props }, ref) => {
     return (
       <motion.nav
