@@ -39,6 +39,7 @@ const navGlowVariants = {
 
 export const GlowMenu = forwardRef<HTMLElement, GlowMenuProps>(
   ({ className, items, activeItem, onItemClick, ...props }, ref) => {
+    const { onDrag, ...safeProps } = props;
     return (
       <motion.nav
         ref={ref}
@@ -48,7 +49,7 @@ export const GlowMenu = forwardRef<HTMLElement, GlowMenuProps>(
         )}
         initial="initial"
         whileHover="hover"
-        {...props}
+        {...safeProps}
       >
         <motion.div
           className="pointer-events-none absolute -inset-2 rounded-3xl bg-[radial-gradient(circle_at_30%_20%,rgba(255,74,209,0.25),transparent_55%),radial-gradient(circle_at_80%_20%,rgba(124,59,255,0.2),transparent_60%),radial-gradient(circle_at_50%_90%,rgba(255,47,168,0.2),transparent_60%)]"
