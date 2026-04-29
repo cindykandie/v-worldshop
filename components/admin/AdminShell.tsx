@@ -1,16 +1,9 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import LogoutButton from "@/components/admin/LogoutButton";
-
-const navItems = [
-  { label: "Dashboard", href: "/admin" },
-  { label: "Workshops", href: "/admin/workshops" },
-  { label: "Stories", href: "/admin/stories" },
-  { label: "Subscribers", href: "/admin/subscribers" },
-];
+import AdminNav from "@/components/admin/AdminNav";
 
 export default async function AdminShell({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
@@ -19,38 +12,56 @@ export default async function AdminShell({ children }: { children: ReactNode }) 
   }
 
   return (
-    <div className="min-h-screen bg-vw-obsidian text-white">
+    <div className="min-h-screen bg-vw-obsidian font-ui text-white">
       <div className="flex min-h-screen">
-        <aside className="hidden w-64 flex-col border-r border-white/10 bg-black/40 p-6 lg:flex">
-          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
-            The Vagina Worldshop
-          </div>
-          <div className="mt-3 text-lg font-semibold text-white">Admin Portal</div>
+        {/* Sidebar */}
+        <aside className="hidden w-60 flex-col border-r border-white/8 bg-black/50 lg:flex">
+          {/* Hot-pink top accent */}
+          <div className="h-0.5 bg-gradient-to-r from-vw-hot-pink via-vw-magenta to-transparent" />
 
-          <nav className="mt-10 flex flex-col gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-xl border border-transparent px-4 py-2 text-sm text-white/70 transition hover:border-white/10 hover:bg-white/5 hover:text-white"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-1 flex-col p-5">
+            {/* Brand */}
+            <div className="pb-5 border-b border-white/8">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/40">
+                Admin Portal
+              </p>
+              <p className="mt-1 text-sm font-semibold text-white leading-snug">
+                Vagina Worldshop
+              </p>
+            </div>
+
+            <AdminNav />
+
+            {/* Footer spacer */}
+            <div className="mt-auto pt-5 border-t border-white/8">
+              <p className="text-[11px] text-white/30">
+                {session.user.email}
+              </p>
+            </div>
+          </div>
         </aside>
 
+        {/* Main content */}
         <div className="flex flex-1 flex-col">
-          <header className="flex items-center justify-between border-b border-white/10 bg-black/30 px-6 py-4">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-white/50">Welcome back</p>
-              <p className="text-lg font-semibold text-white">{session.user.name}</p>
+          {/* Top bar */}
+          <header className="flex items-center justify-between border-b border-white/8 bg-black/30 px-6 py-3.5">
+            <div className="flex items-center gap-3">
+              {/* Mobile brand */}
+              <span className="text-sm font-semibold text-white lg:hidden">
+                Admin
+              </span>
+              <div className="hidden lg:block">
+                <p className="text-xs text-white/40 font-medium">
+                  Welcome back,{" "}
+                  <span className="text-white/80">{session.user.name}</span>
+                </p>
+              </div>
             </div>
             <LogoutButton />
           </header>
 
-          <main className="flex-1 p-6 lg:p-10">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
+          <main className="flex-1 p-5 lg:p-8">
+            <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5 lg:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
               {children}
             </div>
           </main>

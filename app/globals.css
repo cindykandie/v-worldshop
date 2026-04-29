@@ -195,6 +195,7 @@ section {
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
+  --font-ui: var(--font-admin);
 }
 
 @media (prefers-reduced-motion: reduce) {
