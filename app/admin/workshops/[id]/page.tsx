@@ -35,6 +35,7 @@ export default async function EditWorkshopPage({ params }: { params: Promise<{ i
             location: workshop.location,
             price: String(workshop.price),
             imageUrl: workshop.imageUrl ?? "",
+            bookingUrl: workshop.bookingUrl ?? "",
             isPublished: workshop.isPublished,
           }}
         />

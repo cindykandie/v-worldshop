@@ -31,7 +31,7 @@ export default function WorkshopList() {
       if (!response.ok) throw new Error("Failed to fetch workshops");
       const data = (await response.json()) as Workshop[];
       const sorted = [...data].sort((a, b) => {
-        const dateDiff = new Date(a.date).getTime() - new Date(b.date).getTime();
+        const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
         if (dateDiff !== 0) return dateDiff;
         return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       });

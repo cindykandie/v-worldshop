@@ -16,6 +16,7 @@ model Workshop {
   location    String
   price       Int
   imageUrl    String?
+  bookingUrl  String?
   isPublished Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
