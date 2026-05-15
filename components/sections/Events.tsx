@@ -132,22 +132,54 @@ const Events = async () => {
                 });
 
                 return (
-                  <div key={workshop.id} className="vw-card vw-card-sheen rounded-3xl p-6">
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-                        {dateLabel}
-                      </p>
-                      <p className="text-xs uppercase tracking-[0.2em] text-vw-hot-pink">
-                        KES {workshop.price}
-                      </p>
-                    </div>
-                    <h4 className="mt-3 text-lg font-semibold text-white">
-                      {workshop.title}
-                    </h4>
-                    <p className="mt-2 text-sm text-white/70">{workshop.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-white/60">
-                      <span>{workshop.time}</span>
-                      <span>{workshop.location}</span>
+                  <div key={workshop.id} className="vw-card vw-card-sheen overflow-hidden rounded-3xl">
+                    {workshop.imageUrl ? (
+                      <div className="relative h-48 w-full overflow-hidden">
+                        <Image
+                          src={workshop.imageUrl}
+                          alt={workshop.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          unoptimized={!workshop.imageUrl.startsWith("/")}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/50" />
+                        <div className="absolute bottom-3 right-4 text-xs uppercase tracking-[0.2em] text-vw-hot-pink font-semibold">
+                          KES {workshop.price.toLocaleString()}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    <div className="p-6">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs uppercase tracking-[0.2em] text-white/60">
+                          {dateLabel}
+                        </p>
+                        {!workshop.imageUrl ? (
+                          <p className="text-xs uppercase tracking-[0.2em] text-vw-hot-pink">
+                            KES {workshop.price.toLocaleString()}
+                          </p>
+                        ) : null}
+                      </div>
+                      <h4 className="mt-3 text-lg font-semibold text-white">
+                        {workshop.title}
+                      </h4>
+                      <p className="mt-2 text-sm text-white/70">{workshop.description}</p>
+                        <div className="mt-4 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-white/60">
+                        <span>{workshop.time}</span>
+                        <span>{workshop.location}</span>
+                      </div>
+
+                      <a
+                        href={workshop.bookingUrl ?? "https://vaginaworldshop.hustlesasa.shop/"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 inline-flex items-center gap-2 rounded-full bg-vw-hot-pink px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-white transition hover:opacity-90 active:scale-[0.98]"
+                      >
+                        Book Now
+                        <svg viewBox="0 0 16 16" fill="none" className="h-3 w-3" stroke="currentColor" strokeWidth="2">
+                          <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 );

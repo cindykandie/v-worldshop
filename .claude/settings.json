@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn add *)",
+      "Bash(npx prisma *)",
+      "Bash(ffmpeg -version)",
+      "Bash(node -e \"const { Client } = require\\('pg'\\); const c = new Client\\(process.env.DATABASE_URL\\); c.connect\\(\\).then\\(\\(\\) => { console.log\\('Connected!'\\); c.end\\(\\); }\\).catch\\(e => console.error\\('Failed:', e.message\\)\\);\")"
+    ]
+  }
+}

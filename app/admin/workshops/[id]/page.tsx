@@ -7,9 +7,10 @@ function toDateInput(date: Date) {
   return date.toISOString().slice(0, 10);
 }
 
-export default async function EditWorkshopPage({ params }: { params: { id: string } }) {
+export default async function EditWorkshopPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const workshop = await prisma.workshop.findUnique({
-    where: { id: params.id },
+    where: { id },
   });
 
   if (!workshop) {
@@ -34,6 +35,7 @@ export default async function EditWorkshopPage({ params }: { params: { id: strin
             location: workshop.location,
             price: String(workshop.price),
             imageUrl: workshop.imageUrl ?? "",
+            bookingUrl: workshop.bookingUrl ?? "",
             isPublished: workshop.isPublished,
           }}
         />

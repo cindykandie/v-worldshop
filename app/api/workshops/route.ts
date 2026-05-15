@@ -42,11 +42,9 @@ export async function POST(request: Request) {
       location: data.location,
       price: data.price,
       imageUrl:
-        data.imageUrl === ""
-          ? null
-          : data.imageUrl?.trim()
-          ? data.imageUrl.trim()
-          : null,
+        data.imageUrl === "" ? null : data.imageUrl?.trim() ? data.imageUrl.trim() : null,
+      bookingUrl:
+        data.bookingUrl === "" ? null : data.bookingUrl?.trim() ? data.bookingUrl.trim() : null,
       isPublished: data.isPublished,
     },
   });

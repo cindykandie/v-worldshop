@@ -68,6 +68,7 @@ export async function PATCH(
     location?: string;
     price?: number;
     imageUrl?: string | null;
+    bookingUrl?: string | null;
     isPublished?: boolean;
   } = {};
 
@@ -79,6 +80,9 @@ export async function PATCH(
   if (data.price !== undefined) updateData.price = data.price;
   if (data.imageUrl !== undefined) {
     updateData.imageUrl = data.imageUrl === "" ? null : data.imageUrl.trim();
+  }
+  if (data.bookingUrl !== undefined) {
+    updateData.bookingUrl = data.bookingUrl === "" ? null : data.bookingUrl.trim();
   }
   if (data.isPublished !== undefined) updateData.isPublished = data.isPublished;
 

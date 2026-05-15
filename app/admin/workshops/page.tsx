@@ -15,7 +15,7 @@ export default function AdminWorkshopsPage() {
           </div>
           <Link
             href="/admin/workshops/new"
-            className="rounded-full bg-vw-hot-pink px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black"
+            className="rounded-full bg-vw-hot-pink px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white"
           >
             New Workshop
           </Link>

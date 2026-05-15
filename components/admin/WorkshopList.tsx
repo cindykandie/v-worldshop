@@ -31,12 +31,12 @@ export default function WorkshopList() {
       if (!response.ok) throw new Error("Failed to fetch workshops");
       const data = (await response.json()) as Workshop[];
       const sorted = [...data].sort((a, b) => {
-        const dateDiff = new Date(a.date).getTime() - new Date(b.date).getTime();
+        const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
         if (dateDiff !== 0) return dateDiff;
         return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       });
       setWorkshops(sorted);
-    } catch (err) {
+    } catch {
       setError("Unable to load workshops.");
     } finally {
       setIsLoading(false);
@@ -86,18 +86,24 @@ export default function WorkshopList() {
   }
 
   if (isLoading) {
-    return <p className="text-sm text-white/70">Loading workshops...</p>;
+    return (
+      <div className="space-y-3">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-20 animate-pulse rounded-xl bg-white/5" />
+        ))}
+      </div>
+    );
   }
 
   if (error) {
     return (
-      <div className="rounded-2xl border border-rose-300/30 bg-rose-500/10 p-4 text-sm text-rose-200">
+      <div className="rounded-xl border border-rose-400/20 bg-rose-500/10 p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span>{error}</span>
+          <p className="text-sm text-rose-300">{error}</p>
           <button
             type="button"
             onClick={load}
-            className="rounded-full border border-rose-300/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-200 transition hover:text-rose-100"
+            className="rounded-lg border border-rose-400/30 px-3 py-1.5 text-xs font-medium text-rose-300 transition hover:text-rose-200"
           >
             Retry
           </button>
@@ -108,72 +114,92 @@ export default function WorkshopList() {
 
   if (workshops.length === 0) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-black/30 p-6 text-sm text-white/70">
-        No workshops yet. Create the first one.
+      <div className="rounded-xl border border-white/8 bg-black/20 px-6 py-10 text-center">
+        <p className="text-sm text-white/50">No workshops yet.</p>
+        <p className="mt-1 text-xs text-white/30">Create the first session to get started.</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {notice ? (
-        <div className="rounded-2xl border border-emerald-300/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+        <div className="rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
           {notice}
         </div>
       ) : null}
+
+      {/* Column headers */}
+      <div className="hidden md:grid md:grid-cols-[1fr_auto_auto_auto] md:items-center md:gap-4 px-4 pb-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">Workshop</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">Status</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">Price</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">Actions</p>
+      </div>
+
       {workshops.map((workshop) => {
         const dateLabel = new Date(workshop.date).toLocaleDateString("en-US", {
           month: "short",
           day: "numeric",
           year: "numeric",
         });
-        const updatedLabel = new Date(workshop.updatedAt).toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        });
+        const isBusy = busyId === workshop.id;
 
         return (
           <div
             key={workshop.id}
-            className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/30 p-5 md:flex-row md:items-center md:justify-between"
+            className="flex flex-col gap-4 rounded-xl border border-white/8 bg-black/25 px-4 py-4 transition hover:border-white/12 md:grid md:grid-cols-[1fr_auto_auto_auto] md:items-center md:gap-4"
           >
+            {/* Info */}
             <div>
-              <div className="flex flex-wrap items-center gap-3">
-                <h3 className="text-lg font-semibold text-white">{workshop.title}</h3>
-                <span className="rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/60">
-                  {workshop.isPublished ? "Published" : "Draft"}
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-white/70">
+              <p className="text-sm font-semibold text-white leading-snug">{workshop.title}</p>
+              <p className="mt-1 text-xs text-white/50">
                 {dateLabel} · {workshop.time} · {workshop.location}
               </p>
-              <div className="mt-1 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/50">
-                <span className="text-vw-hot-pink">KES {workshop.price}</span>
-                <span>Updated {updatedLabel}</span>
-              </div>
             </div>
 
+            {/* Status badge */}
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ${
+                workshop.isPublished
+                  ? "bg-emerald-500/15 text-emerald-400 border border-emerald-400/20"
+                  : "bg-white/8 text-white/50 border border-white/10"
+              }`}
+            >
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  workshop.isPublished ? "bg-emerald-400" : "bg-white/40"
+                }`}
+              />
+              {workshop.isPublished ? "Published" : "Draft"}
+            </span>
+
+            {/* Price */}
+            <p className="text-sm font-semibold text-vw-hot-pink">
+              KES {workshop.price.toLocaleString()}
+            </p>
+
+            {/* Actions */}
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={() => handleTogglePublish(workshop)}
-                disabled={busyId === workshop.id}
-                className="rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={isBusy}
+                className="rounded-lg border border-white/12 px-3 py-1.5 text-xs font-medium text-white/60 transition hover:border-white/25 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {workshop.isPublished ? "Unpublish" : "Publish"}
               </button>
               <Link
                 href={`/admin/workshops/${workshop.id}`}
-                className="rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:text-white"
+                className="rounded-lg border border-white/12 px-3 py-1.5 text-xs font-medium text-white/60 transition hover:border-white/25 hover:text-white"
               >
                 Edit
               </Link>
               <button
                 type="button"
                 onClick={() => handleDelete(workshop.id)}
-                disabled={busyId === workshop.id}
-                className="rounded-full border border-rose-300/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-200 transition hover:text-rose-100 disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={isBusy}
+                className="rounded-lg border border-rose-400/20 px-3 py-1.5 text-xs font-medium text-rose-400/70 transition hover:border-rose-400/40 hover:text-rose-300 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Delete
               </button>
