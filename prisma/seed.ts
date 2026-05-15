@@ -31,7 +31,7 @@ async function main() {
         time: "6:30 PM - 8:00 PM",
         location: "Nairobi Dance Loft",
         price: 2500,
-        imageUrl: "/workshops/twerk-out.jpg",
+        imageUrl: "/dancelogo.jpg",
         isPublished: true,
       },
       {
@@ -42,7 +42,7 @@ async function main() {
         time: "5:00 PM - 6:30 PM",
         location: "The Vagina Worldshop Studio",
         price: 2200,
-        imageUrl: "/workshops/soft-power-flow.jpg",
+        imageUrl: "/dancelogo.jpg",
         isPublished: true,
       },
       {
@@ -53,7 +53,7 @@ async function main() {
         time: "4:00 PM - 5:30 PM",
         location: "Nairobi Dance Loft",
         price: 2000,
-        imageUrl: "/workshops/twerk-foundations.jpg",
+        imageUrl: "/dancelogo.jpg",
         isPublished: true,
       },
     ],
